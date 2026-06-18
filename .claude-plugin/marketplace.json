@@ -9,7 +9,7 @@
       "name": "no-numb",
       "source": "./",
       "description": "Quizzes you on the code Claude Code just wrote, and blocks the session until you pass.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "license": "MIT",
       "author": {
         "name": "Andrei Alexandru"
