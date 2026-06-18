@@ -64,7 +64,7 @@ Or, to try it locally from a clone:
 /plugin install no-numb@no-numb
 ```
 
-To configure, create `~/.no-numb/config.json` with the two keys above (or leave it out and take the defaults). To turn it off for a while, set `"enabled": false`.
+No-Numb creates `~/.no-numb/config.json` with these defaults on first run, so there's always a file to edit. Change `"enabled"` to `false` to pause it, or `"depth"` to `"deep"` for harder questions. It lives in your home directory (not the plugin folder) so your settings survive plugin updates, and an existing file is never overwritten.
 
 ## Honest notes
 

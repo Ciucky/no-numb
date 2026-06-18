@@ -20,16 +20,23 @@ field() { printf '%s' "$input" | jq -r "$1" 2>/dev/null; }
 #    Claude Code sets stop_hook_active=true on that continuation.
 [ "$(field '.stop_hook_active // false')" = "true" ] && exit 0
 
-# 2) Off switch. Config lives outside any repo so it survives pulls/reinstalls.
-#    Note: test `.enabled == false` explicitly — jq's `//` treats false as "use
-#    default", so `.enabled // true` would wrongly read false as true. Missing
-#    file or key → enabled (default on).
+# 2) Ensure the config exists with defaults — created once, on first run. It
+#    lives in the home dir (not the plugin cache, which is wiped on update) so
+#    it's a stable, discoverable, editable location.
 config="${HOME}/.no-numb/config.json"
-if [ -f "$config" ] && [ "$(jq -r '.enabled == false' "$config" 2>/dev/null)" = "true" ]; then
+if [ ! -f "$config" ]; then
+  mkdir -p "${HOME}/.no-numb" 2>/dev/null \
+    && printf '{\n  "enabled": true,\n  "depth": "standard"\n}\n' > "$config" 2>/dev/null || true
+fi
+
+# 3) Off switch. Test `.enabled == false` explicitly — jq's `//` treats false as
+#    "use default", so `.enabled // true` would wrongly read false back as true.
+#    Missing/unreadable config or key → enabled (default on).
+if [ "$(jq -r '.enabled == false' "$config" 2>/dev/null)" = "true" ]; then
   exit 0
 fi
 
-# 3) Doorbell: did Claude Edit/Write/MultiEdit/NotebookEdit any file since the
+# 4) Doorbell: did Claude Edit/Write/MultiEdit/NotebookEdit any file since the
 #    user's last prompt (i.e. during this run)? No transcript → fail open (no
 #    quiz), because trapping the user on a parse error is worse than missing one.
 transcript="$(field '.transcript_path // empty')"
