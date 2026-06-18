@@ -1,0 +1,7 @@
+# Local design docs — kept out of the published plugin
+no-numb-SPEC.md
+SPEC.md
+
+# OS / editor cruft
+.DS_Store
+*.swp

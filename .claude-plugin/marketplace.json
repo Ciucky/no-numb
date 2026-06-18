@@ -1,0 +1,21 @@
+{
+  "name": "no-numb",
+  "owner": {
+    "name": "Andrei Alexandru"
+  },
+  "description": "No-Numb — build with Claude Code without your brain going numb.",
+  "plugins": [
+    {
+      "name": "no-numb",
+      "source": "./",
+      "description": "Quizzes you on the code Claude Code just wrote, and blocks the session until you pass.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "author": {
+        "name": "Andrei Alexandru"
+      },
+      "repository": "https://github.com/Ciucky/no-numb",
+      "keywords": ["learning", "comprehension", "quiz"]
+    }
+  ]
+}
