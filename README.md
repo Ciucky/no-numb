@@ -4,6 +4,8 @@
 
 > The middle ground: built fast like an agent, understood like you wrote it yourself.
 
+![No-Numb quizzing you on code Claude just wrote, mid-session in the editor](assets/quiz-standard.png)
+
 ---
 
 ## The problem
@@ -23,6 +25,10 @@ No-Numb makes the good habit — actually understanding what got built — the *
 5. Until you pass, the session won't move on. The only way past without passing is a deliberate interrupt (Esc) — skipping is possible, but it's a *choice*, not the easy path.
 
 Pure conversation turns (no file edits) are never quizzed. Genuinely cosmetic changes (a rename, a color tweak, a typo) are skipped by Claude's judgment.
+
+Miss a question and it shows the correct answer and explains *why* — that explanation is the part that makes the understanding stick:
+
+![No-Numb explaining a missed answer before continuing](assets/quiz-explanation.png)
 
 ## The two dials
 
@@ -45,6 +51,10 @@ That's the entire config surface — two keys in `~/.no-numb/config.json`:
 - **`deep`** — questions you can only answer by **going and reading the code** (it tells you where to look). More granular, but still reasoning over rote recall.
 
 Neither level tests "what does this app do" — that's the high-level understanding you *don't* lose. Both aim below the awareness line, at the part that vaporizes.
+
+The same kind of change, quizzed at `deep` — now you have to open the file and read it to answer:
+
+![A No-Numb deep-depth question that requires reading the code](assets/quiz-deep.png)
 
 Want a quiz without the gate? Run **`/no-numb:quiz-me`** any time for a voluntary self-check.
 
