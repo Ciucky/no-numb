@@ -1,7 +1,7 @@
 {
   "name": "no-numb",
   "displayName": "No-Numb",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Quizzes you on the code Claude Code just wrote — and blocks the session until you pass. Recover the understanding you lose when you orchestrate instead of author.",
   "author": {
     "name": "Andrei Alexandru"

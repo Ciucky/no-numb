@@ -54,6 +54,8 @@ The user must go look at the implementation. **Always point them to where to loo
 
 Deliver with `AskUserQuestion`, **one question per call**. Write **plausible distractors**: the wrong options must be the misconceptions someone would actually hold if they didn't understand this code. Obvious-dummy options turn it back into trivia and let them pass by elimination.
 
+**Vary where the correct answer sits.** Decide the correct option's slot (1st–4th) *before* you write the options, and move it around from question to question — rotate through positions (e.g. 2nd, 4th, 1st, 3rd). **Never let the correct answer default to the first slot:** a quiz whose answer is always option 1 is passed by reflex, not comprehension. Across a quiz, spread the correct positions out — don't cluster them.
+
 > Multiple choice is required, not a style preference. `AskUserQuestion` is a tool call, so your turn stays alive and the gate can hold. A plain-text question would force you to end your turn and wait for a reply — which releases the gate. Do not switch to prose questions during a gated quiz. (The "Other" free-text box is fine for the rare question that needs a typed answer, since it stays inside the tool call.)
 
 ## Step 5 — Grade and explain
@@ -79,3 +81,4 @@ Any wrong answer means the user retakes the **full** quiz. Regenerate it with li
 - **Standard that references code, or deep that doesn't point to it.** standard = no file/line references; deep = always say where to look.
 - **Switching to prose in a gated turn.** It ends your turn and releases the gate. Keep it `AskUserQuestion` multiple choice.
 - **Skipping too eagerly.** Only *genuinely cosmetic* changes skip. When unsure, quiz.
+- **Correct answer always first.** Vary its slot every question; an answer that's always option 1 is gameable by reflex, not comprehension.
